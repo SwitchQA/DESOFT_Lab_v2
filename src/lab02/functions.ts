@@ -5,9 +5,6 @@ export function calcularMediaPesada(nota1: number, nota2: number, nota3: number,
     if (peso1 + peso2 + peso3 != 100) {
         throw new RangeError('Total dos pesos deve ser 100%');
     }
-    if (nota1 > 20 || nota1 < 0 || nota2 > 20 || nota2 < 0 || nota3 > 20 || nota3 < 0) {
-        throw new RangeError('Nota não pode exceder 20 ou ser menor que zero');
-    }
     return mediaPesada;
 }
 

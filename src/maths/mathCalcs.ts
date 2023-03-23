@@ -98,4 +98,9 @@ console.log(calcAlgoritmo(10));
 import { ordemCrescente } from "../lab02/functions";
 
 console.log(ordemCrescente(999));
+
+
+import { calcularCustoMaisHoras } from "../lab02/functions";
+
+console.log(calcularCustoMaisHoras(300, 5, 10));
 */
