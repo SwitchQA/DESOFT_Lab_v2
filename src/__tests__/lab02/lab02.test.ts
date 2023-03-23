@@ -12,6 +12,12 @@ describe('', () => {
         
     });
 });
+
+test('Zero number of boys and girls should raise an exception', () => {
+        expect(() => {
+            calculateGenderPercentage(0, 0);
+        }).toThrow('Boys and girls must not equal zero');
+    });
 */
 
 //ex.1
@@ -34,6 +40,22 @@ describe('calcularMediaPesada', () => {
 
         //Assert
         expect(mediaPesada).toBe(expectedMediaPesada);
+        expect(peso1 + peso2 + peso3).toBe(100);
+    });
+    test('Nota exceder 20', () => {
+        expect(() => {
+            calcularMediaPesada(25, 25, 25, 10, 10, 80);
+        }).toThrow('Nota não pode exceder 20 ou ser menor que zero');
+    });
+    test('Nota ser menor que 0', () => {
+        expect(() => {
+            calcularMediaPesada(-2, 25, 25, 10, 10, 80);
+        }).toThrow('Nota não pode exceder 20 ou ser menor que zero');
+    });
+    test('Pesos não equivalarem a 100%', () => {
+        expect(() => {
+            calcularMediaPesada(-2, 25, 25, 5, 10, 80);
+        }).toThrow('Total dos pesos deve ser 100%');
     });
 });
 
@@ -46,6 +68,17 @@ describe('ex.2, verificar se nota é superior a oito', () => {
         //Arrange
         let nota: number = 9;
         let expectedResult: boolean = true;
+
+        //Act
+        let result = notaSuperiorOito(nota);
+
+        //Assert
+        expect(result).toBe(expectedResult);
+    });
+    test('nota = 9', () => {
+        //Arrange
+        let nota: number = 7;
+        let expectedResult: boolean = false;
 
         //Act
         let result = notaSuperiorOito(nota);
@@ -74,6 +107,11 @@ describe('ex.3, Calcular distância entre dois pontos num plano', () => {
         //Assert
         expect(d).toBe(expectedD);
     });
+    test('Pontos iguais', () => {
+        expect(() => {
+            calcularDistanciaPontos(2, 2, 2, 2);
+        }).toThrow('Pontos iguais, distância zero');
+    });
 });
 
 
@@ -96,6 +134,28 @@ describe('ex.4, Ler três digitos, retorna digito 1', () => {
     test('56', () => {
         //Arrange
         let numero: number = 56;
+        let expectedResult: number = -1;
+
+        //Act
+        let result: number = lerTresDigitos(numero);
+
+        //Assert
+        expect(result).toBe(expectedResult);
+    });
+    test('100', () => {
+        //Arrange
+        let numero: number = 100;
+        let expectedResult: number = -1;
+
+        //Act
+        let result: number = lerTresDigitos(numero);
+
+        //Assert
+        expect(result).toBe(expectedResult);
+    });
+    test('999', () => {
+        //Arrange
+        let numero: number = 999;
         let expectedResult: number = -1;
 
         //Act
@@ -230,8 +290,33 @@ describe('ex.7_v2, Calcular volume do cubo a partir da área', () => {
 
         //Assert
         expect(volume).toBe(expectedVolume);
+
     });
-    test('área = 5', () => {
+    test('área = 7', () => {
+        //Arrange
+        let area: number = 7;
+        let expectedVolume: string = '1.26 e este volume é considerado: Médio';
+
+        //Act
+        let volume: string = calcularVolumeCubov2(area);
+
+        //Assert
+        expect(volume).toBe(expectedVolume);
+
+    });
+    test('área = 12', () => {
+        //Arrange
+        let area: number = 12;
+        let expectedVolume: string = '2.83 e este volume é considerado: Grande';
+
+        //Act
+        let volume: string = calcularVolumeCubov2(area);
+
+        //Assert
+        expect(volume).toBe(expectedVolume);
+
+    });
+    test('área = 0', () => {
         //Arrange
         let area: number = 0;
         let expectedVolume: string = '-1 e este volume é considerado: Pequeno';
@@ -371,7 +456,7 @@ describe('ex.11, Verificar se dado um nº de 3 digitos, a sua ordem é crescente
         //Assert
         expect(result).toBe(expectedResult);
     });
-    test('963', () => {
+    test('968', () => {
         //Arrange
         let number: number = 968;
         let expectedResult: boolean = false;
@@ -382,7 +467,12 @@ describe('ex.11, Verificar se dado um nº de 3 digitos, a sua ordem é crescente
         //Assert
         expect(result).toBe(expectedResult);
     });
-    // missing throwrangererror
+    test('Número com mais ou menos que 3 digitos', () => {
+        expect(() => {
+            ordemCrescente(4585);
+            ordemCrescente(45);
+        }).toThrow('Apenas número com 3 digitos');
+    });
 });
 
 //ex.12
@@ -433,6 +523,11 @@ describe('ex.12, Calcular desconto dado o preço', () => {
 
         //Assert
         expect(result).toBe(expectedResult);
+    });
+    test('Preço menor que zero', () => {
+        expect(() => {
+            calcularDesconto(0);
+        }).toThrow('Preço não pode ser negativo');
     });
 });
 
@@ -516,44 +611,44 @@ import { polutionWarning } from "../../lab02/functions";
 describe('ex.14, Aviso de poluição baseado em indice', () => {
     test('Indice 0.3', () => {
         //Arrange
-        let indicePoluicao:number = 0.3;
-        let expectedResult:string = 'Tá tudo bem';
+        let indicePoluicao: number = 0.3;
+        let expectedResult: string = 'Tá tudo bem';
 
         //Act
-        let result:string = polutionWarning(indicePoluicao);
+        let result: string = polutionWarning(indicePoluicao);
 
         //Assert
         expect(result).toBe(expectedResult);
     });
     test('Indice 0.4', () => {
         //Arrange
-        let indicePoluicao:number = 0.4;
-        let expectedResult:string = 'Grupo 1 deve suspender atividades';
+        let indicePoluicao: number = 0.4;
+        let expectedResult: string = 'Grupo 1 deve suspender atividades';
 
         //Act
-        let result:string = polutionWarning(indicePoluicao);
+        let result: string = polutionWarning(indicePoluicao);
 
         //Assert
         expect(result).toBe(expectedResult);
     });
     test('Indice 0.5', () => {
         //Arrange
-        let indicePoluicao:number = 0.5;
-        let expectedResult:string = 'Grupo 1 e 2 devem suspender atividades';
+        let indicePoluicao: number = 0.5;
+        let expectedResult: string = 'Grupo 1 e 2 devem suspender atividades';
 
         //Act
-        let result:string = polutionWarning(indicePoluicao);
+        let result: string = polutionWarning(indicePoluicao);
 
         //Assert
         expect(result).toBe(expectedResult);
     });
     test('Indice 0.6', () => {
         //Arrange
-        let indicePoluicao:number = 0.6;
-        let expectedResult:string = 'Grupo 1, 2 e 3 devem suspender atividades';
+        let indicePoluicao: number = 0.6;
+        let expectedResult: string = 'Grupo 1, 2 e 3 devem suspender atividades';
 
         //Act
-        let result:string = polutionWarning(indicePoluicao);
+        let result: string = polutionWarning(indicePoluicao);
 
         //Assert
         expect(result).toBe(expectedResult);
@@ -606,15 +701,195 @@ describe('ex.16, Calcular média em kilómetros', () => {
 
 import { calcularCustoPintura } from "../../lab02/functions";
 
-describe('ex.17, ', () => {
-    test('', () => {
+describe('ex.17, Calcular custo pintura edificio', () => {
+    test('Dados 50m2 edificio, 5.5€ custo litro tinta, rendimento/litro da tinta 3 m2/litro, e 50€ dia cada pintor', () => {
         //Arrange
-        
+        let areaEdificio: number = 50;
+        let custoLitroTinta: number = 5.5;
+        let rendimentoLitro: number = 3;
+        let salarioDiaPintor: number = 50;
+        let expectedResult: number = 247;
 
         //Act
-        
+        let result: number = calcularCustoPintura(areaEdificio, custoLitroTinta, rendimentoLitro, salarioDiaPintor);
 
         //Assert
-        
+        expect(result).toBe(expectedResult);
     });
+    test('Dados 150m2 edificio, 5.5€ custo litro tinta, rendimento/litro da tinta 3 m2/litro, e 50€ dia cada pintor', () => {
+        //Arrange
+        let areaEdificio: number = 150;
+        let custoLitroTinta: number = 5.5;
+        let rendimentoLitro: number = 3;
+        let salarioDiaPintor: number = 50;
+        let expectedResult: number = 743;
+
+        //Act
+        let result: number = calcularCustoPintura(areaEdificio, custoLitroTinta, rendimentoLitro, salarioDiaPintor);
+
+        //Assert
+        expect(result).toBe(expectedResult);
+    });
+    test('Dados 350m2 edificio, 5.5€ custo litro tinta, rendimento/litro da tinta 3 m2/litro, e 50€ dia cada pintor', () => {
+        //Arrange
+        let areaEdificio: number = 350;
+        let custoLitroTinta: number = 5.5;
+        let rendimentoLitro: number = 3;
+        let salarioDiaPintor: number = 50;
+        let expectedResult: number = 1735;
+
+        //Act
+        let result: number = calcularCustoPintura(areaEdificio, custoLitroTinta, rendimentoLitro, salarioDiaPintor);
+
+        //Assert
+        expect(result).toBe(expectedResult);
+    });
+    test('Dados 1500m2 edificio, 5.5€ custo litro tinta, rendimento/litro da tinta 3 m2/litro, e 50€ dia cada pintor', () => {
+        //Arrange
+        let areaEdificio: number = 1500;
+        let custoLitroTinta: number = 5.5;
+        let rendimentoLitro: number = 3;
+        let salarioDiaPintor: number = 50;
+        let expectedResult: number = 7437;
+
+        //Act
+        let result: number = calcularCustoPintura(areaEdificio, custoLitroTinta, rendimentoLitro, salarioDiaPintor);
+
+        //Assert
+        expect(result).toBe(expectedResult);
+    });
+});
+
+
+//ex.18
+
+import { horaChegada } from "../../lab02/functions";
+
+describe('ex.18, Calcular hora de chegada com base na hora da partida e duração da viagem', () => {
+    test('Dado saída às 10:50, e duração 5h:10m', () => {
+        //Arrange
+        let horaPartida: number = 10;
+        let minutosPartida: number = 50;
+        let HorasDuracaoViagem: number = 5;
+        let minutosDuracaoViagem: number = 10;
+        let expectedResult: string = 'O comboio chegou no mesmo dia às: 16:0';
+
+        //Act
+        let result: string = horaChegada(horaPartida, minutosPartida, HorasDuracaoViagem, minutosDuracaoViagem);
+
+        //Assert
+        expect(result).toBe(expectedResult);
+    });
+    test('Dado saída às 23:50, e duração 5h:10m', () => {
+        //Arrange
+        let horaPartida: number = 23;
+        let minutosPartida: number = 50;
+        let HorasDuracaoViagem: number = 5;
+        let minutosDuracaoViagem: number = 10;
+        let expectedResult: string = 'O comboio chegou no dia seguinte às: 5:0';
+
+        //Act
+        let result: string = horaChegada(horaPartida, minutosPartida, HorasDuracaoViagem, minutosDuracaoViagem);
+
+        //Assert
+        expect(result).toBe(expectedResult);
+    });
+    test('Horas superior a 24 ou minutos superior a 60', () => {
+        expect(() => {
+            horaChegada(22, 20, 25, 60);
+            horaChegada(22, 20, 20, 70);
+            horaChegada(22, 20, -2, 60);
+            horaChegada(25, 20, 20, 60);
+        }).toThrow('Hora deve ser um valor entre 0 e 24. Minutos deve ser um valor entre 0 e 60.');
+    })
+});
+
+
+//ex.19
+
+import { calcularTempoFinalProcessamento } from "../../lab02/functions";
+
+describe('ex.19, Calcular tempo final de processamento', () => {
+    test('Dado que a tarefa demorou 5000 segundos', () => {
+        //Arrange
+        let horaInicioProcessamento: number = 10;
+        let minutoInicioProcessamento: number = 40;
+        let segundoInicioProcessamento: number = 50;
+        let tempoSegundosProcessamento: number = 5000;
+        let expectedResult: string = 'O processamento demorou um dia ou menos e terminou em: 12:4:10';
+
+        //Act
+        let result: string = calcularTempoFinalProcessamento(horaInicioProcessamento, minutoInicioProcessamento, segundoInicioProcessamento, tempoSegundosProcessamento);
+
+        //Assert
+        expect(result).toBe(expectedResult);
+    });
+    test('Dado que a tarefa demorou 90000 segundos', () => {
+        //Arrange
+        let horaInicioProcessamento: number = 10;
+        let minutoInicioProcessamento: number = 40;
+        let segundoInicioProcessamento: number = 50;
+        let tempoSegundosProcessamento: number = 90000;
+        let expectedResult: string = 'O processamento demorou mais de um dia (compra um novo) e terminou em: 11:40:50';
+
+        //Act
+        let result: string = calcularTempoFinalProcessamento(horaInicioProcessamento, minutoInicioProcessamento, segundoInicioProcessamento, tempoSegundosProcessamento);
+
+        //Assert
+        expect(result).toBe(expectedResult);
+    });
+});
+
+
+//ex.20
+
+import { calcularSalarioSemanal } from "../../lab02/functions";
+
+describe('ex. 20, Calcular custo salarial semanal', () => {
+    test('Trabalhou 35 horas', () => {
+        //Arrange
+        let horasTrabalho: number = 35;
+        let expectedResult: number = 262.5;
+
+        //Act
+        let result: number = calcularSalarioSemanal(horasTrabalho);
+
+        //Assert
+        expect(result).toBe(expectedResult);
+    });
+    test('Trabalhou 38 horas', () => {
+        //Arrange
+        let horasTrabalho: number = 38;
+        let expectedResult: number = 290;
+
+        //Act
+        let result: number = calcularSalarioSemanal(horasTrabalho);
+
+        //Assert
+        expect(result).toBe(expectedResult);
+    });
+    test('Trabalhou 42 horas', () => {
+        //Arrange
+        let horasTrabalho: number = 42;
+        let expectedResult: number = 335;
+
+        //Act
+        let result: number = calcularSalarioSemanal(horasTrabalho);
+
+        //Assert
+        expect(result).toBe(expectedResult);
+    });
+    test('expect error more than 168 hours a week or negative hours', () => {
+        expect(() => {
+            calcularSalarioSemanal(170);
+            calcularSalarioSemanal(-1); //isto pode ser assim?!
+        }).toThrow('Horas de trabalho não podem exceder 168 semanais, ou ser negativas');
+    })
+    test('throws error if hours is negative', () => { //criado com ChatGPT
+        //Arrange
+        const horasTrabalho = -1;
+        
+        //Act & Assert
+        expect(() => calcularSalarioSemanal(horasTrabalho)).toThrow('Horas de trabalho não podem exceder 168 semanais, ou ser negativas')
+    })
 });

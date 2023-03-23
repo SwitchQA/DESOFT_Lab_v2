@@ -2,13 +2,19 @@
 
 export function calcularMediaPesada(nota1: number, nota2: number, nota3: number, peso1: number, peso2: number, peso3: number): number {
     let mediaPesada: number = (nota1 * peso1 + nota2 * peso2 + nota3 * peso3) / (peso1 + peso2 + peso3)
+    if (peso1 + peso2 + peso3 != 100) {
+        throw new RangeError('Total dos pesos deve ser 100%');
+    }
+    if (nota1 > 20 || nota1 < 0 || nota2 > 20 || nota2 < 0 || nota3 > 20 || nota3 < 0) {
+        throw new RangeError('Nota não pode exceder 20 ou ser menor que zero');
+    }
     return mediaPesada;
 }
 
 //ex.2
 
 export function notaSuperiorOito(nota: number): boolean {
-    if (nota > 8) {
+    if (nota >= 8) {
         return true;
     }
     return false;
@@ -18,6 +24,9 @@ export function notaSuperiorOito(nota: number): boolean {
 
 export function calcularDistanciaPontos(x1: number, x2: number, y1: number, y2: number): number {
     let d: number = Math.pow((Math.sqrt(x2 - x1)), 2) + Math.pow((y2 - y1), 2);
+    if (x1 == y1 && x2 == y2) {
+        throw new RangeError('Pontos iguais, distância zero');
+    }
     return d;
 }
 
@@ -97,8 +106,6 @@ export function calcularVolumeCubov2(area: number): string {
         outcome = 'Médio';
     } else if (volume > 2) {
         outcome = 'Grande';
-    } else {
-        outcome = 'Inválido'
     }
     return (Number(volume.toFixed(2)) + ' e este volume é considerado: ' + outcome);
 }
@@ -173,14 +180,17 @@ export function ordemCrescente(numero: number): boolean {
 
 export function calcularDesconto(preco: number): number {
     let precoComSaldo: number = 0;
+    if (preco < 0) {
+        throw new RangeError('Preço não pode ser negativo');
+    }
     if (preco > 200) {
-        precoComSaldo = preco -(preco * 0.6);
+        precoComSaldo = preco - (preco * 0.6);
     } else if (preco > 100 && preco <= 200) {
-        precoComSaldo = preco -(preco * 0.4);
+        precoComSaldo = preco - (preco * 0.4);
     } else if (preco > 50 && preco <= 100) {
-        precoComSaldo = preco -(preco * 0.3);
+        precoComSaldo = preco - (preco * 0.3);
     } else if (preco <= 50) {
-        precoComSaldo = preco -(preco * 0.2);
+        precoComSaldo = preco - (preco * 0.2);
     }
     return precoComSaldo;
 }
@@ -211,7 +221,7 @@ export function checkAprovados(aprovados: number): string {
 
 export function polutionWarning(indicePoluicao: number) {
     let aviso: string = '';
-    if (indicePoluicao <=0.3){
+    if (indicePoluicao <= 0.3) {
         aviso = 'Tá tudo bem';
     } else if (indicePoluicao > 0.3 && indicePoluicao <= 0.4) {
         aviso = 'Grupo 1 deve suspender atividades';
@@ -277,13 +287,16 @@ export function calcularCustoPintura(areaEdificio: number, custoLitroTinta: numb
     let horasNecessarias: number = areaEdificio / (rendimentoPintor * pintoresNecessarios);
     let custoPintores: number = (horasNecessarias / horasTrabalhoPintor) * (salarioDiaPintor * pintoresNecessarios);
     let custoTotalPinturaEdificio = custoPintores + custoTinta;
-    return custoTotalPinturaEdificio;
+    return Math.floor(custoTotalPinturaEdificio);
 }
 
 //ex.18
 
 export function horaChegada(horaPartida: number, minutosPartida: number, HorasDuracaoViagem: number, minutosDuracaoViagem: number): string {
     // adicionar throw back error caso duracao viagem seja superior a 24 horas || minutos superior a 60.
+    if (HorasDuracaoViagem > 24 || minutosDuracaoViagem > 60 || HorasDuracaoViagem < 0 || minutosDuracaoViagem < 0 || horaPartida > 24 || minutosPartida > 60) {
+        throw new RangeError('Hora deve ser um valor entre 0 e 24. Minutos deve ser um valor entre 0 e 60.');
+    }
     let tempoPartidaEmMinutos: number = (horaPartida * 60) + minutosPartida;
     let tempoDuracaoViagemEmMinutos: number = (HorasDuracaoViagem * 60) + minutosDuracaoViagem;
     let outcome: string = '';
@@ -319,7 +332,6 @@ export function calcularTempoFinalProcessamento(horaInicioProcessamento: number,
         ((tempoFinalProcessamentoSegundos + tempoInicioSegundosTotal) > 86400);
         outcome = 'O processamento demorou mais de um dia (compra um novo) e terminou em: ';
         tempoFinalProcessamentoHora = tempoFinalProcessamentoHora - 24;
-        tempoFinalProcessamentoMinuto = tempoFinalProcessamentoMinuto - 60;
     }
     return (outcome + tempoFinalProcessamentoHora + ':' + tempoFinalProcessamentoMinuto + ':' + tempoFinalProcessamentoSegundo)
 }
@@ -339,6 +351,9 @@ export function calcularSalarioSemanal(horasTrabalho: number): number {
         remuneracao = (horasSemanaisTrabalhoNormal * eurosHoraNormal) + (horasTrabalhoExtra * eurosHoraExtra1);
     } else if (horasTrabalho > 41) { //make raise exception if bigger than 168.
         remuneracao = (horasSemanaisTrabalhoNormal * eurosHoraNormal) + (5 * eurosHoraExtra1) + ((horasTrabalhoExtra - 5) * eurosHoraExtra2);
+    }
+    if (horasTrabalho > 168 || horasTrabalho < 0) {
+        throw new RangeError('Horas de trabalho não podem exceder 168 semanais, ou ser negativas');
     }
     return remuneracao;
 }

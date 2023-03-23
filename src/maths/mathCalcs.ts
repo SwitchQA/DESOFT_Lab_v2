@@ -72,4 +72,30 @@ console.log(calcularCustoMaisHoras(2,5, 20));
 import { calcularMediaKilometros } from "../lab02/functions";
 
 console.log(calcularMediaKilometros(2,6,9,7,8));
+
+
+import { calcularSalarioSemanal } from "../lab02/functions";
+
+console.log(calcularSalarioSemanal (170));
+
+
+import { calcularTempoFinalProcessamento } from "../lab02/functions";
+
+console.log(calcularTempoFinalProcessamento(10,40,50,90000));
+
+
+import { calcularVolumeCubov2 } from "../lab02/functions";
+
+console.log(calcularVolumeCubov2(12));
+
+
+import { calcAlgoritmo } from "../lab03/functions";
+
+console.log(calcAlgoritmo(10));
+
+
+
+import { ordemCrescente } from "../lab02/functions";
+
+console.log(ordemCrescente(999));
 */
