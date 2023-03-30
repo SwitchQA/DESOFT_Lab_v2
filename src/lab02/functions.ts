@@ -21,24 +21,17 @@ export function notaSuperiorOito(nota: number): boolean {
 
 export function calcularDistanciaPontos(x1: number, x2: number, y1: number, y2: number): number {
     let d: number = Math.pow((Math.sqrt(x2 - x1)), 2) + Math.pow((y2 - y1), 2);
-    if (x1 == y1 && x2 == y2) {
-        throw new RangeError('Pontos iguais, distância zero');
-    }
     return d;
 }
 
 //ex.4
 
 export function lerTresDigitos(numero: number) {
-    let digito3: number = 0;
-    let digito2: number = 0;
+
     let digito1: number = 0;
     if (numero < 100 || numero > 999) {
-        console.log('Número não tem 3 dígitos');
         digito1 = -1;
     } else {
-        digito3 = Math.floor(numero % 10);
-        digito2 = Math.floor((numero / 10) % 10);
         digito1 = Math.floor((numero / 100) % 10);
     }
     return digito1
@@ -49,10 +42,8 @@ export function lerTresDigitos(numero: number) {
 export function ePar(numero: number): boolean {
     let numeroCheck: number = numero % 2
     if (numeroCheck % 2 == 0) {
-        console.log('O número é par');
         return true
     } else {
-        console.log('O número não é par');
         return false
     }
 }
@@ -60,42 +51,26 @@ export function ePar(numero: number): boolean {
 //ex.6
 
 export function calculateFunctionX(numero: number): number {
-    let numeroX: number;
+    let result: number;
     if (numero < 0) {
-        numeroX = numero
+        result = numero;
     } else if (numero > 0) {
-        numeroX = numero * 2 - 2 * numero
+        result = Math.pow(numero,2) - 2 * numero;
     } else {
-        numeroX = 0
+        result = 0;
     }
-    return numeroX;
-}
+    return result;
+}   
 
-//ex.7
+//ex.7.b
 
-export function calcularVolumeCubo(area: number): number {
-    let volume: number = 0;
-    let aresta: number = 0;
-    if (area > 0) {
-        aresta = Math.sqrt(area / 6);
-        volume = Math.pow(aresta, 3);
-    } else {
-        volume = -1.00;
-    }
-    return Number(volume.toFixed(2));
-}
-
-//ex.7_v2
-
-export function calcularVolumeCubov2(area: number): string {
-    let volume: number = 0;
-    let aresta: number = 0;
+export function calcularVolumeCubo(area: number): string {
+    let volume: number = -1;
+    let aresta: number;
     let outcome: string = '';
     if (area > 0) {
         aresta = Math.sqrt(area / 6);
-        volume = Math.pow(aresta, 3);
-    } else {
-        volume = -1.00;
+        volume = Number((Math.pow(aresta, 3)/1000).toFixed(2));
     }
     if (volume <= 1) {
         outcome = 'Pequeno';
@@ -104,7 +79,7 @@ export function calcularVolumeCubov2(area: number): string {
     } else if (volume > 2) {
         outcome = 'Grande';
     }
-    return (Number(volume.toFixed(2)) + ' e este volume é considerado: ' + outcome);
+    return (volume + ' e este volume é considerado: ' + outcome);
 }
 
 //ex.8
@@ -131,9 +106,9 @@ export function saudacao(segundosGiven: number): string {
     let output: string = '';
     if (segundosGiven < 0 || segundosGiven > 86400) {
         output = 'Segundos tem de ser positivo e não pode exceder os segundos de um único dia';
-    } else if (segundosGiven > 21600 && segundosGiven <= 43201) {
+    } else if (segundosGiven >= 21600 && segundosGiven < 43201) {
         output = 'Bom dia';
-    } else if (segundosGiven > 43201 && segundosGiven <= 72001) {
+    } else if (segundosGiven >= 43201 && segundosGiven < 72001) {
         output = 'Boa tarde';
     } else {
         output = 'Boa noite';

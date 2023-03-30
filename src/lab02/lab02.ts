@@ -1,3 +1,4 @@
+/*
 //ex.1
 
 import { calcularMediaPesada } from "./functions";
@@ -57,3 +58,4 @@ ordemCrescente(123);
 
 import { calcularCustoMaisHoras } from "./functions";
 console.log(calcularCustoMaisHoras(2, 2, 2));
+*/

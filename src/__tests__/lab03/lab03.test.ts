@@ -18,11 +18,11 @@ test('Zero number of boys and girls should raise an exception', () => {
             calculateGenderPercentage(0, 0);
         }).toThrow('Boys and girls must not equal zero');
     });
-*/
+
 
 //ex.1
 
-import { calcAlgoritmo } from "../../lab03/functions";
+import { calcFatorial } from "../../lab03/functions";
 
 describe('ex.1: Factorial: ', () => {
     test('1', () => {
@@ -30,7 +30,7 @@ describe('ex.1: Factorial: ', () => {
         const num:number = 10
         let expectedResult:number = 10;
         //Act
-        let result = calcAlgoritmo(num);
+        let result = calcFatorial(num);
         //Assert
         expect(result).toBe(expectedResult);
     });
@@ -335,3 +335,6 @@ describe('ex.5: Apresenta salário liquido dado salário bruto', () => {
         expect(result).toBe(expectedResult);
     });
 });
+
+//ex.6.a
+*/

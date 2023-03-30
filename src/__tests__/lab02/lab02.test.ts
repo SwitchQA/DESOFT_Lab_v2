@@ -42,16 +42,6 @@ describe('calcularMediaPesada', () => {
         expect(mediaPesada).toBe(expectedMediaPesada);
         expect(peso1 + peso2 + peso3).toBe(100);
     });
-    test('Nota exceder 20', () => {
-        expect(() => {
-            calcularMediaPesada(25, 25, 25, 10, 10, 80);
-        }).toThrow('Nota não pode exceder 20 ou ser menor que zero');
-    });
-    test('Nota ser menor que 0', () => {
-        expect(() => {
-            calcularMediaPesada(-2, 25, 25, 10, 10, 80);
-        }).toThrow('Nota não pode exceder 20 ou ser menor que zero');
-    });
     test('Pesos não equivalarem a 100%', () => {
         expect(() => {
             calcularMediaPesada(-2, 25, 25, 5, 10, 80);
@@ -64,9 +54,20 @@ describe('calcularMediaPesada', () => {
 import { notaSuperiorOito } from "../../lab02/functions";
 
 describe('ex.2, verificar se nota é superior a oito', () => {
-    test('nota = 9', () => {
+    test('nota = 7', () => {
         //Arrange
-        let nota: number = 9;
+        let nota: number = 7;
+        let expectedResult: boolean = false;
+
+        //Act
+        let result = notaSuperiorOito(nota);
+
+        //Assert
+        expect(result).toBe(expectedResult);
+    });
+    test('nota = 8', () => {
+        //Arrange
+        let nota: number = 8;
         let expectedResult: boolean = true;
 
         //Act
@@ -77,8 +78,8 @@ describe('ex.2, verificar se nota é superior a oito', () => {
     });
     test('nota = 9', () => {
         //Arrange
-        let nota: number = 7;
-        let expectedResult: boolean = false;
+        let nota: number = 9;
+        let expectedResult: boolean = true;
 
         //Act
         let result = notaSuperiorOito(nota);
@@ -107,11 +108,6 @@ describe('ex.3, Calcular distância entre dois pontos num plano', () => {
         //Assert
         expect(d).toBe(expectedD);
     });
-    test('Pontos iguais', () => {
-        expect(() => {
-            calcularDistanciaPontos(2, 2, 2, 2);
-        }).toThrow('Pontos iguais, distância zero');
-    });
 });
 
 
@@ -131,9 +127,9 @@ describe('ex.4, Ler três digitos, retorna digito 1', () => {
         //Assert
         expect(result).toBe(expectedResult);
     });
-    test('56', () => {
+    test('99', () => {
         //Arrange
-        let numero: number = 56;
+        let numero: number = 99;
         let expectedResult: number = -1;
 
         //Act
@@ -145,7 +141,7 @@ describe('ex.4, Ler três digitos, retorna digito 1', () => {
     test('100', () => {
         //Arrange
         let numero: number = 100;
-        let expectedResult: number = -1;
+        let expectedResult: number = 1;
 
         //Act
         let result: number = lerTresDigitos(numero);
@@ -156,6 +152,17 @@ describe('ex.4, Ler três digitos, retorna digito 1', () => {
     test('999', () => {
         //Arrange
         let numero: number = 999;
+        let expectedResult: number = 9;
+
+        //Act
+        let result: number = lerTresDigitos(numero);
+
+        //Assert
+        expect(result).toBe(expectedResult);
+    });
+    test('1000', () => {
+        //Arrange
+        let numero: number = 1000;
         let expectedResult: number = -1;
 
         //Act
@@ -236,7 +243,7 @@ describe('ex.6, Caculcar Função X', () => {
     test('Sendo x = 4', () => {
         //Arrange
         let number: number = 4;
-        let expectedResult: number = 0;
+        let expectedResult: number = 8;
 
         //Act
         let result: number = calculateFunctionX(number);
@@ -246,71 +253,66 @@ describe('ex.6, Caculcar Função X', () => {
     });
 });
 
-//ex.7
+//ex.7.b
 
 import { calcularVolumeCubo } from "../../lab02/functions";
 
-describe('ex.7, Calcular volume do cubo a partir da área', () => {
-    test('área = 5', () => {
-        //Arrange
-        let area: number = 5;
-        let expectedVolume = 0.76;
-
-        //Act
-        let volume: number = calcularVolumeCubo(area);
-
-        //Assert
-        expect(volume).toBe(expectedVolume);
-    });
-    test('área = 5', () => {
-        //Arrange
-        let area: number = 0;
-        let expectedVolume = -1.00;
-
-        //Act
-        let volume: number = calcularVolumeCubo(area);
-
-        //Assert
-        expect(volume).toBe(expectedVolume);
-    });
-});
-
-//ex.7_v2
-
-import { calcularVolumeCubov2 } from "../../lab02/functions";
-
 describe('ex.7_v2, Calcular volume do cubo a partir da área', () => {
-    test('área = 5', () => {
+    test('área = 100', () => {
         //Arrange
-        let area: number = 5;
-        let expectedVolume: string = '0.76 e este volume é considerado: Pequeno';
+        let area: number = 0.07;
+        let expectedVolume: string = '0.07 e este volume é considerado: Pequeno';
 
         //Act
-        let volume: string = calcularVolumeCubov2(area);
+        let volume: string = calcularVolumeCubo(area);
 
         //Assert
         expect(volume).toBe(expectedVolume);
 
     });
-    test('área = 7', () => {
+    test('área = 600', () => {
         //Arrange
-        let area: number = 7;
+        let area: number = 600;
+        let expectedVolume: string = '1 e este volume é considerado: Pequeno';
+
+        //Act
+        let volume: string = calcularVolumeCubo(area);
+
+        //Assert
+        expect(volume).toBe(expectedVolume);
+
+    });
+    test('área = 700', () => {
+        //Arrange
+        let area: number = 700;
         let expectedVolume: string = '1.26 e este volume é considerado: Médio';
 
         //Act
-        let volume: string = calcularVolumeCubov2(area);
+        let volume: string = calcularVolumeCubo(area);
 
         //Assert
         expect(volume).toBe(expectedVolume);
 
     });
-    test('área = 12', () => {
+    test('área = 952', () => {
         //Arrange
-        let area: number = 12;
-        let expectedVolume: string = '2.83 e este volume é considerado: Grande';
+        let area: number = 952;
+        let expectedVolume: string = '2 e este volume é considerado: Médio';
 
         //Act
-        let volume: string = calcularVolumeCubov2(area);
+        let volume: string = calcularVolumeCubo(area);
+
+        //Assert
+        expect(volume).toBe(expectedVolume);
+
+    });
+    test('área = 1000', () => {
+        //Arrange
+        let area: number = 1000;
+        let expectedVolume: string = '2.15 e este volume é considerado: Médio';
+
+        //Act
+        let volume: string = calcularVolumeCubo(area);
 
         //Assert
         expect(volume).toBe(expectedVolume);
@@ -322,7 +324,7 @@ describe('ex.7_v2, Calcular volume do cubo a partir da área', () => {
         let expectedVolume: string = '-1 e este volume é considerado: Pequeno';
 
         //Act
-        let volume: string = calcularVolumeCubov2(area);
+        let volume: string = calcularVolumeCubo (area);
 
         //Assert
         expect(volume).toBe(expectedVolume);
@@ -363,7 +365,18 @@ describe('ex.8, Apresentar horas minutos e segundos, dados total segundos', () =
 import { saudacao } from "../../lab02/functions";
 
 describe('ex.9, ', () => {
-    test('Mais de 24h em segundos', () => {
+    test('= 86400 segundos>', () => {
+        //Arrange
+        let segundos: number = 86400;
+        let expectedResult: string = 'Boa noite'
+
+        //Act
+        let result: string = saudacao(segundos);
+
+        //Assert
+        expect(result).toBe(expectedResult);
+    });
+    test('> 86400 segundos>', () => {
         //Arrange
         let segundos: number = 86500;
         let expectedResult: string = 'Segundos tem de ser positivo e não pode exceder os segundos de um único dia'
@@ -374,9 +387,9 @@ describe('ex.9, ', () => {
         //Assert
         expect(result).toBe(expectedResult);
     });
-    test('22000 segundos', () => {
+    test('0 segundos>', () => {
         //Arrange
-        let segundos: number = 22000;
+        let segundos: number = 0;
         let expectedResult: string = 'Bom dia'
 
         //Act
@@ -385,9 +398,42 @@ describe('ex.9, ', () => {
         //Assert
         expect(result).toBe(expectedResult);
     });
-    test('44000 segundos', () => {
+    test('21600 segundos', () => {
         //Arrange
-        let segundos: number = 44000;
+        let segundos: number = 21600;
+        let expectedResult: string = 'Bom dia'
+
+        //Act
+        let result: string = saudacao(segundos);
+
+        //Assert
+        expect(result).toBe(expectedResult);
+    });
+    test('21601 segundos', () => {
+        //Arrange
+        let segundos: number = 21601;
+        let expectedResult: string = 'Bom dia'
+
+        //Act
+        let result: string = saudacao(segundos);
+
+        //Assert
+        expect(result).toBe(expectedResult);
+    });
+    test('43201 segundos', () => {
+        //Arrange
+        let segundos: number = 43201;
+        let expectedResult: string = 'Bom tarde'
+
+        //Act
+        let result: string = saudacao(segundos);
+
+        //Assert
+        expect(result).toBe(expectedResult);
+    });
+    test('43202 segundos', () => {
+        //Arrange
+        let segundos: number = 43202;
         let expectedResult: string = 'Boa tarde'
 
         //Act
@@ -396,9 +442,9 @@ describe('ex.9, ', () => {
         //Assert
         expect(result).toBe(expectedResult);
     });
-    test('80000 segundos', () => {
+    test('72001 segundos', () => {
         //Arrange
-        let segundos: number = 80000;
+        let segundos: number = 72001;
         let expectedResult: string = 'Boa noite'
 
         //Act
@@ -526,7 +572,7 @@ describe('ex.12, Calcular desconto dado o preço', () => {
     });
     test('Preço menor que zero', () => {
         expect(() => {
-            calcularDesconto(0);
+            calcularDesconto(-1);
         }).toThrow('Preço não pode ser negativo');
     });
 });

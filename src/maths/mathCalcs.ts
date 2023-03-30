@@ -84,9 +84,6 @@ import { calcularTempoFinalProcessamento } from "../lab02/functions";
 console.log(calcularTempoFinalProcessamento(10,40,50,90000));
 
 
-import { calcularVolumeCubov2 } from "../lab02/functions";
-
-console.log(calcularVolumeCubov2(12));
 
 
 import { calcAlgoritmo } from "../lab03/functions";
@@ -104,3 +101,8 @@ import { calcularCustoMaisHoras } from "../lab02/functions";
 
 console.log(calcularCustoMaisHoras(300, 5, 10));
 */
+
+
+import { calcularVolumeCubo } from "../lab02/functions";
+
+console.log(calcularVolumeCubo(1000));

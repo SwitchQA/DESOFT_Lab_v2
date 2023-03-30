@@ -75,7 +75,7 @@ export function calculateGirlsPercentage(boys: number, girls: number): number {
 
     return girlsPercentage;
 }
-*/
+
 //////////////
 //ex.2
 import { calculatePriceRamo } from "./functions_lab01";
@@ -135,3 +135,4 @@ console.log("A altura do edificio é: "+ calcularAlturaEdificio);
 import { calcularDistanciaEntrePessoas } from "./functions_lab01";
 console.log("A distância entre os trabalhadores é: "+ calcularDistanciaEntrePessoas);
 
+*/
