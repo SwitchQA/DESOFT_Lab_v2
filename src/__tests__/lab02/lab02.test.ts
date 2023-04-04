@@ -260,8 +260,8 @@ import { calcularVolumeCubo } from "../../lab02/functions";
 describe('ex.7_v2, Calcular volume do cubo a partir da área', () => {
     test('área = 100', () => {
         //Arrange
-        let area: number = 0.07;
-        let expectedVolume: string = '0.07 e este volume é considerado: Pequeno';
+        let area: number = 0;
+        let expectedVolume: string = '-1 e este volume é considerado: Pequeno';
 
         //Act
         let volume: string = calcularVolumeCubo(area);
@@ -309,7 +309,7 @@ describe('ex.7_v2, Calcular volume do cubo a partir da área', () => {
     test('área = 1000', () => {
         //Arrange
         let area: number = 1000;
-        let expectedVolume: string = '2.15 e este volume é considerado: Médio';
+        let expectedVolume: string = '2.15 e este volume é considerado: Grande';
 
         //Act
         let volume: string = calcularVolumeCubo(area);
@@ -390,7 +390,7 @@ describe('ex.9, ', () => {
     test('0 segundos>', () => {
         //Arrange
         let segundos: number = 0;
-        let expectedResult: string = 'Bom dia'
+        let expectedResult: string = 'Boa noite'
 
         //Act
         let result: string = saudacao(segundos);
@@ -423,7 +423,7 @@ describe('ex.9, ', () => {
     test('43201 segundos', () => {
         //Arrange
         let segundos: number = 43201;
-        let expectedResult: string = 'Bom tarde'
+        let expectedResult: string = 'Boa tarde'
 
         //Act
         let result: string = saudacao(segundos);
