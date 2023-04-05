@@ -2,68 +2,6 @@
 
 /////////////questions:
 
-
-//ex.6
-
-//ex.6.a //my resolution
-
-export function countMultiplesOfThreeInRage_mine(start: number, end: number): number {
-        let count: number = 0;
-        for (let i = start; i <= end; i++) {
-            if (i % 3 == 0) {
-                count++;
-            }
-        }
-        return count;
-    }
-    /*
-    return countMultiplesOfNumberInRage_mine(3, start, end); //depois de fazer o ex.6.b, voltei aqui e fiz assim
-}
-*/
-
-//ex.6.b //my resolution
-export function countMultiplesOfNumberInRage_mine(num: number, start: number, end: number) {
-    let count: number = 0;
-    for (let i = start; i <= end; i++) {
-        if (i % num == 0) {
-            count++;
-        }
-    }
-    return count;
-
-}
-
-//ex.6.c //my resolution
-
-export function countMultiplesOfThreeAndFiveInRange_mine(start: number, end: number) {
-    let counts: number = countMultiplesOfNumberInRage_mine(3, start, end) + countMultiplesOfNumberInRage_mine(5, start, end);
-    return counts;
-}
-
-//ex.6.d //my resolution
-
-export function countMultiplesofTwoNumbersInRange_mine(num1: number, num2: number, start: number, end: number) {
-    let counts: number = countMultiplesOfNumberInRage_mine(num1, start, end) + countMultiplesOfNumberInRage_mine(num2, start, end);
-    return counts;
-}
-
-//ex.6.e //my resolution
-
-function sumMultiplesOfNumbersInRange_mine(num: number, start: number, end: number) {
-    let sum: number = 0;
-    for (let i = start; i <= end; i++) {
-        if (i % num == 0) {
-            sum = sum + num;
-        }
-    }
-    return sum
-}
-
-export function sumTheMultiplesOfTwoNumbersInRange_mine(num1: number, num2: number, start: number, end: number) {
-    let sum = sumMultiplesOfNumbersInRange_mine(num1, start, end) + sumMultiplesOfNumbersInRange_mine(num2, start, end);
-    return sum;
-}
-
 //ex.6.a //ai resolution
 //uses function from ex.6.b
 /*
