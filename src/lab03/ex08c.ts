@@ -1,14 +1,14 @@
 /**
- * function will return the number of even algarisms in a integer number;
+ * function will return the number of odd numbers, in given integer
  * @param number is given number
- * @returns number of even algarisms in a integer number
+ * @returns number of odd numbers in a integer number
  * @throws Error if number is not a integer
  * @throws Error if number is negative
  */
 
 import { ensureInteger, ensurePositive, isPair } from "./functions";
 
-export function countEvenNumbersInInteger(number: number): number {
+export function countOddNumbersInInteger(number: number): number {
 
     ensureInteger(number);
 
@@ -16,10 +16,10 @@ export function countEvenNumbersInInteger(number: number): number {
 
     let count = 0;
     while (number > 0) {
-        if (isPair(number)) {
+        if (!isPair(number)) {
             count++;
         }
-        number = Math.floor(number / 10);
+        number = Math.floor(number / 10); //could I modulate this line in a function?
     }
     return count;
 }

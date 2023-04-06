@@ -6,7 +6,6 @@
  * @throws Error if start and end are equal
  */
 
-//ask chatGPT about using a while loop instead of for loop
 //não entendo porque é que se tenho um throw error caso o start e o end sejam iguais, mas a mutação sobrevive
 
 export function sumOfMultiplesInRange(start: number, end: number, multiple: number): number {

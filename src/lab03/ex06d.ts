@@ -11,7 +11,7 @@
 
 export function countMultiplesOfTwoGivenNumbersInRange(start: number, end: number, n1: number, n2: number): number {
     if (start >= end) {
-        throw new RangeError('Start is greater than or equal to end');
+        throw new RangeError('Start is greater than or equal to end'); //these all should be functions
     }
     if (n1 < 0 || n2 < 0) {
         throw new Error('n1 or n2 are negative');

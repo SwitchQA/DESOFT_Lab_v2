@@ -1,25 +1,25 @@
 /**
- * function will return the number of even algarisms in a integer number;
+ * function will return the sum of all odd digits in given integer.
  * @param number is given number
- * @returns number of even algarisms in a integer number
+ * @returns sum of all odd digits in given integer
  * @throws Error if number is not a integer
  * @throws Error if number is negative
  */
 
 import { ensureInteger, ensurePositive, isPair } from "./functions";
 
-export function countEvenNumbersInInteger(number: number): number {
+export function sumOddDigitsInInteger(number: number): number {
 
     ensureInteger(number);
 
     ensurePositive(number);
 
-    let count = 0;
+    let sum = 0;
     while (number > 0) {
-        if (isPair(number)) {
-            count++;
+        if (!isPair(number % 10)) {
+            sum += number % 10;
         }
         number = Math.floor(number / 10);
     }
-    return count;
+    return sum;
 }

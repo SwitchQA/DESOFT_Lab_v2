@@ -6,19 +6,18 @@
  * @throws Error if number is negative
  */
 
+import { ensureInteger, ensurePositive } from "./functions";
+
 export function countNumberOfAlgarismsInInteger(number: number): number {
 
-    if (!Number.isInteger(number)) {
-        throw new Error('number is not a integer');
-    }
-    if (number < 0) {
-        throw new Error('number is negative');
+ensureInteger(number);
+
+ensurePositive(number);
+
+    if (number == 0) {
+        return 1;
     }
 
-    if (number == 0){
-        return 1;
-    } 
-    
     let count = 0;
     while (number > 0) {
         number = Math.floor(number / 10);
@@ -26,3 +25,4 @@ export function countNumberOfAlgarismsInInteger(number: number): number {
     }
     return count;
 }
+

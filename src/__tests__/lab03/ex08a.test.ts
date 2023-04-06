@@ -19,10 +19,10 @@ describe('function will count number of algarisms in a integer number', () => {
         //Assert
         expect(result).toBe(expected);
     });
-    test('should throw an error if number is not a integer', () => {
+    test('should throw an error if number is not an integer', () => {
         expect(() => {
             countNumberOfAlgarismsInInteger(10.5);
-        }).toThrow('number is not a integer');
+        }).toThrow('number is not an integer');
     });
     test('should throw an error if number is negative', () => {
         expect(() => {
