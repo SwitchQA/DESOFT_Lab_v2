@@ -5,7 +5,7 @@ describe('cambioCalculator', () => {
         //Arrange
         const euro:number = 1;
         const convertCurrency:string = 'D';
-        let expectedResult:number = 1.534;
+        let expectedResult:number = 0.65;
         //Act
         let result:number = cambioCalculator(euro, convertCurrency);
         //Assert
@@ -15,7 +15,7 @@ describe('cambioCalculator', () => {
         //Arrange
         const euro:number = 1;
         const convertCurrency:string = 'L';
-        let expectedResult:number = 0.774;
+        let expectedResult:number = 1.29;
         //Act
         let result:number = cambioCalculator(euro, convertCurrency);
         //Assert
@@ -25,7 +25,7 @@ describe('cambioCalculator', () => {
         //Arrange
         const euro:number = 1;
         const convertCurrency:string = 'I';
-        let expectedResult:number = 161.480;
+        let expectedResult:number = 0.01;
         //Act
         let result:number = cambioCalculator(euro, convertCurrency);
         //Assert
@@ -35,7 +35,7 @@ describe('cambioCalculator', () => {
         //Arrange
         const euro:number = 1;
         const convertCurrency:string = 'C';
-        let expectedResult:number = 9.593;
+        let expectedResult:number = 0.1;
         //Act
         let result:number = cambioCalculator(euro, convertCurrency);
         //Assert
@@ -45,7 +45,7 @@ describe('cambioCalculator', () => {
         //Arrange
         const euro:number = 1;
         const convertCurrency:string = 'F';
-        let expectedResult:number = 1.601;
+        let expectedResult:number = 0.62;
         //Act
         let result:number = cambioCalculator(euro, convertCurrency);
         //Assert

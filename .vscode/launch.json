@@ -10,7 +10,8 @@
         "outFiles": ["${workspaceFolder}/dist/**/*.js"],
         "sourceMaps": true,
         "preLaunchTask": "tsc: build - tsconfig.json",
-        "cwd": "${workspaceFolder}"
+        "cwd": "${workspaceFolder}",
+        "console": "integratedTerminal"
       }
     ]
   }

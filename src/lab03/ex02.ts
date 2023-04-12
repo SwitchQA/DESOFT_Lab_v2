@@ -10,27 +10,27 @@
  * @throws Error if the given amount of euros is negative
  * 
  */
-export function cambioCalculator(euro: number, convertCurrency: string): number {
-    let newValue: number = 0;
-    if (euro < 0) {
+export function cambioCalculator(value: number, valueCurrency: string): number {
+    let euro: number = 0;
+    if (value < 0) {
         throw new Error('Invalid input');
     }
     const validCurrencies = ['D', 'L', 'I', 'C', 'F'];
-    if (!validCurrencies.includes(convertCurrency)) {
+    if (!validCurrencies.includes(valueCurrency)) {
         throw new RangeError('Not a valid currency');
     }
-    if (convertCurrency == 'D') {
-        newValue = euro * 1.534;
-    } else if (convertCurrency == 'L') {
-        newValue = euro * 0.774;
-    } else if (convertCurrency == 'I') {
-        newValue = euro * 161.480;
-    } else if (convertCurrency == 'C') {
-        newValue = euro * 9.593;
-    } else if (convertCurrency == 'F') { //deleting this if statement will cause get mutation score of 100%
-        newValue = euro * 1.601;
+    if (valueCurrency == 'D') {
+        euro = value / 1.534;
+    } else if (valueCurrency == 'L') {
+        euro = value / 0.774;
+    } else if (valueCurrency == 'I') {
+        euro = value / 161.480;
+    } else if (valueCurrency == 'C') {
+        euro = value / 9.593;
+    } else if (valueCurrency == 'F') { //deleting this if statement will cause get mutation score of 100%
+        euro = value / 1.601;
     }
-    return newValue;
+    return Math.round(euro*100)/100;
 }
 
 // this could be bettered with a two dimensional array
