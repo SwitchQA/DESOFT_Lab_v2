@@ -6,7 +6,7 @@
  * @throws Error if number is negative
  */
 
-import { ensureInteger, ensurePositive, isPair } from "./functions";
+import { ensureInteger, ensurePositive, isEven, returnsRemainder } from "./functions";
 
 export function medianOfEvenDigitsInInteger(number: number): number {
 
@@ -19,9 +19,9 @@ export function medianOfEvenDigitsInInteger(number: number): number {
     let evenDigitsSum = 0;
 
     while (number > 0) {
-        if (isPair(number%10)) {
+        if (isEven(returnsRemainder(number, 10))) {
             evenDigitsCount++;
-            evenDigitsSum += number % 10;
+            evenDigitsSum += returnsRemainder(number, 10);
         }
         number = Math.floor(number / 10);
     }

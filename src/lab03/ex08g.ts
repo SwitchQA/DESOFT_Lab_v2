@@ -6,7 +6,7 @@
  * @throws Error if number is negative
  */
 
-import { ensureInteger, ensurePositive } from "./functions";
+import { ensureInteger, ensurePositive, returnsRemainder } from "./functions";
 
 //need to correct 0 case
 export function medianOfDigitsInInteger(number: number): number {
@@ -18,7 +18,7 @@ export function medianOfDigitsInInteger(number: number): number {
     let sum = 0;
     let count = 0;
     while (number > 0) {
-        sum += number % 10;
+        sum += returnsRemainder(number, 10);
         count++;
         number = Math.floor(number / 10);
     }

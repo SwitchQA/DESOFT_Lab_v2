@@ -100,9 +100,16 @@ console.log(ordemCrescente(999));
 import { calcularCustoMaisHoras } from "../lab02/functions";
 
 console.log(calcularCustoMaisHoras(300, 5, 10));
-*/
 
 
 import { calcularVolumeCubo } from "../lab02/functions";
 
 console.log(calcularVolumeCubo(1000));
+
+
+import { verificarNumeroBICC } from "../lab03/ex15";
+
+verificarNumeroBICC("4116464");
+*/
+import { isArmstrong } from "../lab03/ex09b";
+isArmstrong(153);

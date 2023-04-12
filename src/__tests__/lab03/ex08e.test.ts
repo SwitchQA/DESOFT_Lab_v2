@@ -2,6 +2,7 @@ import { sumEvenDigitsInGivenInteger } from "../../lab03/ex08e";
 
 describe('function should sum ONLY the even digits in given integer', () => {
     test('should throw error if number is not an integer', () => {
+    sumEvenDigitsInGivenInteger(100);
         expect(() => sumEvenDigitsInGivenInteger(1.5)).toThrow(); //can i write exceptions like this instead of more lines?
     });
     test('should throw error if number is negative', () => {

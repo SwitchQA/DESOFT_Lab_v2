@@ -12,6 +12,10 @@ export function ensurePositive(number: number) {
     }
 }
 
-export function isPair(number: number): boolean {
+export function isEven(number: number): boolean {
     return number % 2 == 0;
+}
+
+export function returnsRemainder(number: number, divisor: number): number {
+    return number % divisor;
 }

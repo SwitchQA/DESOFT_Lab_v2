@@ -6,7 +6,7 @@
  * @throws Error if number is negative
  */
 
-import { ensureInteger, ensurePositive, isPair } from "./functions";
+import { ensureInteger, ensurePositive, isEven, returnsRemainder } from "./functions";
 
 export function medianOfOddDigitsInInteger(number: number): number {
 
@@ -19,9 +19,9 @@ export function medianOfOddDigitsInInteger(number: number): number {
     let oddDigitsSum = 0;
 
     while (number > 0) {
-        if (!isPair(number%10)) {
+        if (!isEven(returnsRemainder(number, 10))) {
             oddDigitsCount++;
-            oddDigitsSum += number % 10;
+            oddDigitsSum += returnsRemainder(number, 10);
         }
         number = Math.floor(number / 10);
     }

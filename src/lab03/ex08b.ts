@@ -6,7 +6,7 @@
  * @throws Error if number is negative
  */
 
-import { ensureInteger, ensurePositive, isPair } from "./functions";
+import { ensureInteger, ensurePositive, isEven } from "./functions";
 
 export function countEvenNumbersInInteger(number: number): number {
 
@@ -16,7 +16,7 @@ export function countEvenNumbersInInteger(number: number): number {
 
     let count = 0;
     while (number > 0) {
-        if (isPair(number)) {
+        if (isEven(number)) {
             count++;
         }
         number = Math.floor(number / 10);

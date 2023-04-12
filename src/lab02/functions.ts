@@ -32,7 +32,7 @@ export function lerTresDigitos(numero: number) {
     if (numero < 100 || numero > 999) {
         digito1 = -1;
     } else {
-        digito1 = Math.floor((numero / 100) % 10);
+        digito1 = Math.trunc((numero / 100) % 10);
     }
     return digito1
 }
@@ -55,12 +55,12 @@ export function calculateFunctionX(numero: number): number {
     if (numero < 0) {
         result = numero;
     } else if (numero > 0) {
-        result = Math.pow(numero,2) - 2 * numero;
+        result = Math.pow(numero, 2) - 2 * numero;
     } else {
         result = 0;
     }
     return result;
-}   
+}
 
 //ex.7.b
 
@@ -70,7 +70,7 @@ export function calcularVolumeCubo(area: number): string {
     let outcome: string = '';
     if (area > 0) {
         aresta = Math.sqrt(area / 6);
-        volume = Number((Math.pow(aresta, 3)/1000).toFixed(2));
+        volume = Number((Math.pow(aresta, 3) / 1000).toFixed(2));
     }
     if (volume <= 1) {
         outcome = 'Pequeno';
@@ -92,9 +92,9 @@ export function apresentarHorasMinutosSegundos(segundosGiven: number): string {
     if (segundosGiven < 0 || segundosGiven > 86400) {
         output = 'Segundos tem de ser positivo e não pode exceder os segundos de um único dia';
     } else {
-        horas = Math.floor(segundosGiven / 3600)
-        minutos = Math.floor(segundosGiven / 60 - (horas * 60))
-        segundos = Math.floor(segundosGiven - (minutos * 60) - (horas * 3600))
+        horas = Math.trunc(segundosGiven / 3600)
+        minutos = Math.trunc(segundosGiven / 60 - (horas * 60))
+        segundos = Math.trunc(segundosGiven - (minutos * 60) - (horas * 3600))
         output = 'Txiii, tantos segundos já passaram, já vamos em: ' + horas + ':' + minutos + ':' + segundos;
     }
     return output;
@@ -134,9 +134,9 @@ export function multiplos(x: number, y: number): boolean {
 //ex.11
 
 export function ordemCrescente(numero: number): boolean {
-    let digito1: number = Math.floor(numero / 100);
-    let digito2: number = Math.floor(numero % 100 / 10);
-    let digito3: number = Math.floor(numero % 10);
+    let digito1: number = Math.trunc(numero / 100);
+    let digito2: number = Math.trunc(numero % 100 / 10);
+    let digito3: number = Math.trunc(numero % 10);
     if (numero < 100 || numero > 999)
         throw new RangeError('Apenas número com 3 digitos');
     if (digito1 < digito2 && digito2 < digito3) {
@@ -231,6 +231,8 @@ export function calcularCustoMaisHoras(areaRelva: number, arvores: number, arbus
     return custoMaisHoras;
 }
 
+console.log(calcularCustoMaisHoras(10, 5, 3));
+
 //ex.16
 
 export function calcularMediaKilometros(milhasDia1: number, milhasDia2: number, milhasDia3: number, milhasDia4: number, milhasDia5: number): number {
@@ -261,6 +263,8 @@ export function calcularCustoPintura(areaEdificio: number, custoLitroTinta: numb
     let custoTotalPinturaEdificio = custoPintores + custoTinta;
     return Math.floor(custoTotalPinturaEdificio);
 }
+
+console.log(calcularCustoPintura(1000, 10, 10, 10));
 
 //ex.18
 

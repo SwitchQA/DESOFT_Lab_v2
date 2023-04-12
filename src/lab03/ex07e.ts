@@ -6,7 +6,7 @@
  * @throws Error if start and end are equal
  */
 
-//não entendo porque é que se tenho um throw error caso o start e o end sejam iguais, mas a mutação sobrevive
+//TODO: não entendo porque é que se tenho um throw error caso o start e o end sejam iguais, mas a mutação sobrevive
 
 export function sumOfMultiplesInRange(start: number, end: number, multiple: number): number {
 
@@ -28,5 +28,47 @@ export function sumOfMultiplesInRange(start: number, end: number, multiple: numb
             }
         }
     }
+    return sum;
+
+
+}
+
+///is this the better?
+
+export function ensureStartHigherThanEnd(start: number, end: number): boolean {
+    if (start < end) {
+        return true
+    }
+    return false
+}
+
+function sumOfMultiplesInRange2(start: number, end: number, multiple: number): number {
+    let sum = 0;
+    if (!ensureStartHigherThanEnd(start, end)) {
+        let temp = start;
+        start = end;
+        end = temp;
+    }
+    for (let i = start; i <= end; i++) {
+        if (i % multiple == 0) {
+            sum += i;
+        }
+    }	
+    return sum;
+}
+
+///or this?
+
+function sumOfMultiplesInRange3(start: number, end: number, multiple: number): number {
+    let sum = 0;
+    if (start > end){
+        [start, end] = [end, start];
+    }
+
+    for (let i = start; i <= end; i++) {
+        if (i % multiple == 0) {
+            sum += i;
+        }
+    }	
     return sum;
 }

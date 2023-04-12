@@ -6,7 +6,7 @@
  * @throws Error if number is negative
  */
 
-import { ensureInteger, ensurePositive, isPair } from "./functions";
+import { ensureInteger, ensurePositive, isEven } from "./functions";
 
 export function sumOddDigitsInInteger(number: number): number {
 
@@ -16,7 +16,7 @@ export function sumOddDigitsInInteger(number: number): number {
 
     let sum = 0;
     while (number > 0) {
-        if (!isPair(number % 10)) {
+        if (!isEven(number % 10)) {
             sum += number % 10;
         }
         number = Math.floor(number / 10);

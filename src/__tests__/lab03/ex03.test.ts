@@ -84,6 +84,60 @@ describe ('productDescription', () => {
     });
     test('should return a description for a valid product code', () => {
         //Arrange
+        let itemCode = 8;
+        let expectedResult = 'Limpeza e utensílios domésticos';
+        //Act
+        let result = productDescription(itemCode);
+        //Assert
+        expect(result).toBe(expectedResult);
+    });
+    test('should return a description for a valid product code', () => {
+        //Arrange
+        let itemCode = 9;
+        let expectedResult = 'Limpeza e utensílios domésticos';
+        //Act
+        let result = productDescription(itemCode);
+        //Assert
+        expect(result).toBe(expectedResult);
+    });
+    test('should return a description for a valid product code', () => {
+        //Arrange
+        let itemCode = 10;
+        let expectedResult = 'Limpeza e utensílios domésticos';
+        //Act
+        let result = productDescription(itemCode);
+        //Assert
+        expect(result).toBe(expectedResult);
+    });
+    test('should return a description for a valid product code', () => {
+        //Arrange
+        let itemCode = 11;
+        let expectedResult = 'Limpeza e utensílios domésticos';
+        //Act
+        let result = productDescription(itemCode);
+        //Assert
+        expect(result).toBe(expectedResult);
+    });
+    test('should return a description for a valid product code', () => {
+        //Arrange
+        let itemCode = 12;
+        let expectedResult = 'Limpeza e utensílios domésticos';
+        //Act
+        let result = productDescription(itemCode);
+        //Assert
+        expect(result).toBe(expectedResult);
+    });
+    test('should return a description for a valid product code', () => {
+        //Arrange
+        let itemCode = 13;
+        let expectedResult = 'Limpeza e utensílios domésticos';
+        //Act
+        let result = productDescription(itemCode);
+        //Assert
+        expect(result).toBe(expectedResult);
+    });
+    test('should return a description for a valid product code', () => {
+        //Arrange
         let itemCode = 14;
         let expectedResult = 'Limpeza e utensílios domésticos';
         //Act
@@ -100,14 +154,13 @@ describe ('productDescription', () => {
         //Assert
         expect(result).toBe(expectedResult);
     }); 
-    test('wrong item code to throw exception', () => {
-        expect(() => {
-            productDescription(0);
-        }).toThrow('Código Inválido');
-    });
-    test('wrong item code to throw exception', () => {
-        expect(() => {
-            productDescription(16);
-        }).toThrow('Código Inválido');
-    });
+    test('should return a description for a valid product code', () => {
+        //Arrange
+        let itemCode = 16;
+        let expectedResult = 'Código Inválido';
+        //Act
+        let result = productDescription(itemCode);
+        //Assert
+        expect(result).toBe(expectedResult);
+    }); 
 });

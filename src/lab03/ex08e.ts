@@ -6,7 +6,7 @@
  * @throws Error if number is negative
  */
 
-import { ensureInteger, ensurePositive, isPair } from "./functions";
+import { ensureInteger, ensurePositive, isEven, returnsRemainder} from "./functions";
 
 export function sumEvenDigitsInGivenInteger(number: number): number {
 
@@ -16,9 +16,9 @@ export function sumEvenDigitsInGivenInteger(number: number): number {
 
     let sum = 0;
     while (number > 0) {
-       if (isPair(number % 10)){ //i think this makes more sense, ChatGPT doesn't agree
-        sum += number % 10;
-       }
+        if (isEven(returnsRemainder(number, 10))) { //i think this makes more sense, ChatGPT doesn't agree
+            sum += returnsRemainder(number, 10);
+        }
         number = Math.floor(number / 10);
     }
     return sum;
