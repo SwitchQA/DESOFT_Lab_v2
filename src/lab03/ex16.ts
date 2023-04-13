@@ -4,13 +4,13 @@
  * @returns string
  * @throws Error if number is negative
  */
-import { isEven, ensurePositive} from "./functions";
+import { isEven, ensurePositive } from "./functions";
 
 export function reArrangeDigits(number: string): string {
 
     ensurePositive(parseInt(number));
-    let oddDigits = ""; //these 2 will cause a mutation, how to fix?
-    let evenDigits = "";
+    let oddDigits = ''; //these 2 will cause a mutation, how to fix?
+    let evenDigits = '';
 
     for (let i = 0; i < number.length; i++) {
         if (isEven(parseInt(number[i]))) {
