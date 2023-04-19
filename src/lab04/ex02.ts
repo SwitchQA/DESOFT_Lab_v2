@@ -10,3 +10,13 @@ export function storeDigits(number: number): number[] {
     }
     return numArr;
 }
+
+//could also do this
+
+/*
+export function storeDigits(number: number): number[] {
+    let numStr: string = number.toString();
+    let numArr: number[] = numStr.split('').map(digit => parseInt(digit));
+    return numArr;
+}
+*/
